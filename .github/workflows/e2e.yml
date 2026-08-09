@@ -1,0 +1,26 @@
+name: e2e test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  full-e2e:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1
+    steps:
+      - uses: actions/checkout@v4
+      - name: install npm deps
+        run: npm ci
+      - name: run e2e tests
+        run: npm test
+      - uses: actions/upload-artifact@v4
+        if: always() 
+        with:
+          name: playwright-report-html
+          path: playwright-report/
+          retention-days: 7

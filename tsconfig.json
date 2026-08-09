@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    /* ---- Language target ------------------------------------------------ */
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+
+    /* ---- Type safety ----------------------------------------------------
+     * `strict` is the umbrella flag. The three below it are NOT included in
+     * `strict` but catch real bugs in test code specifically.
+     */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* ---- Interop & performance ------------------------------------------ */
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+
+    /* ---- No build step ---------------------------------------------------
+     * Playwright transpiles TS itself with esbuild. `tsc` is only ever run
+     * as a type checker (`npm run typecheck`), never to emit JS.
+     */
+    "noEmit": true,
+
+    /* ---- Path aliases ----------------------------------------------------
+     * Kills `../../../` imports. Playwright reads these mappings natively.
+     * NOTE: deliberately no `@types/*` alias — it would shadow the
+     * DefinitelyTyped `node_modules/@types` convention and confuse tooling.
+     *
+     * No `baseUrl`: deprecated in TS 6. Since TS 5.4 `paths` resolve relative
+     * to this file, so the entries below are explicitly `./`-prefixed.
+     */
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@core/*": ["./src/core/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@fixtures/*": ["./src/fixtures/*"],
+      "@data/*": ["./src/data/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@typings/*": ["./src/types/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts", "playwright.config.ts"],
+  "exclude": ["node_modules", "playwright-report", "test-results", "blob-report"]
+}
