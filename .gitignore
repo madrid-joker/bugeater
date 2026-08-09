@@ -1,0 +1,28 @@
+# ---- Dependencies -----------------------------------------------------------
+node_modules/
+
+# ---- Playwright outputs -----------------------------------------------------
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# ---- Secrets ----------------------------------------------------------------
+# NEVER commit these. `.env` holds credentials; `playwright/.auth/*.json`
+# holds live session cookies and tokens — committing one is a real credential
+# leak, not a style issue.
+#
+# Note: the *contents* of playwright/.auth/ are ignored by its own nested
+# .gitignore, which keeps the directory itself tracked so it exists on clone.
+.env
+.env.*
+!.env.example
+
+# ---- Editors / OS -----------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.log
+npm-debug.log*
