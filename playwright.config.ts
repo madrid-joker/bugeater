@@ -111,7 +111,7 @@ export default defineConfig({
      * nothing yet - it is here so that when you add them to the app, the
      * framework already knows. If you standardise on `data-qa` instead,
      * this one line is the only change required. */
-    testIdAttribute: 'data-testid',
+    testIdAttribute: 'data-test',
   },
 
   /* ---- Projects ---------------------------------------------------------
