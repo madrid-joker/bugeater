@@ -56,7 +56,7 @@ function optionalInt(name: string): number | undefined {
 
 export const env = {
   /** Root URL of the application under test. */
-  baseUrl: optionalEnv('BASE_URL', 'https://bugeater.web.app'),
+  baseUrl: optionalEnv('BASE_URL', 'https://www.saucedemo.com/'),
 
   /** True when running on a CI runner. GitHub Actions sets CI=true for us. */
   isCI: Boolean(process.env.CI),
